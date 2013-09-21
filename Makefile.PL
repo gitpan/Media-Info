@@ -9,7 +9,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Common interface for Media::Info::*",
+  "ABSTRACT" => "Return information on media (music, video, etc) file/URL",
   "AUTHOR" => "Steven Haryanto <stevenharyanto\@gmail.com>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
@@ -31,7 +31,7 @@ my %WriteMakefileArgs = (
     "Test::Script" => "1.05",
     "blib" => 0
   },
-  "VERSION" => "0.01",
+  "VERSION" => "0.02",
   "test" => {
     "TESTS" => "t/*.t"
   }

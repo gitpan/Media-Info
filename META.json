@@ -1,5 +1,5 @@
 {
-   "abstract" : "Common interface for Media::Info::*",
+   "abstract" : "Return information on media (music, video, etc) file/URL",
    "author" : [
       "Steven Haryanto <stevenharyanto@gmail.com>"
    ],
@@ -50,6 +50,6 @@
          "url" : "http://github.com/sharyanto/perl-Media-Info"
       }
    },
-   "version" : "0.01"
+   "version" : "0.02"
 }
 

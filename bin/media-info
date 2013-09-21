@@ -6,7 +6,7 @@ use warnings;
 
 use Perinci::CmdLine;
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 Perinci::CmdLine->new(url=>'/Media/Info/get_media_info')->run;
 
@@ -26,7 +26,7 @@ media-file - Return information about a media file/URL
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

@@ -10,7 +10,7 @@ our @EXPORT_OK = qw(
                        get_media_info
                );
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 our %SPEC;
 
@@ -33,7 +33,7 @@ sub get_media_info {
 }
 
 1;
-# ABSTRACT: Common interface for Media::Info::*
+# ABSTRACT: Return information on media (music, video, etc) file/URL
 
 __END__
 
@@ -43,11 +43,11 @@ __END__
 
 =head1 NAME
 
-Media::Info - Common interface for Media::Info::*
+Media::Info - Return information on media (music, video, etc) file/URL
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

@@ -1,8 +1,8 @@
 NAME
-    Media::Info - Common interface for Media::Info::*
+    Media::Info - Return information on media (music, video, etc) file/URL
 
 VERSION
-    version 0.01
+    version 0.02
 
 SYNOPSIS
      use Media::Info qw(get_media_info);

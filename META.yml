@@ -1,5 +1,5 @@
 ---
-abstract: 'Common interface for Media::Info::*'
+abstract: 'Return information on media (music, video, etc) file/URL'
 author:
   - 'Steven Haryanto <stevenharyanto@gmail.com>'
 build_requires:
@@ -23,4 +23,4 @@ requires:
 resources:
   homepage: http://metacpan.org/release/Media-Info
   repository: http://github.com/sharyanto/perl-Media-Info
-version: 0.01
+version: 0.02
