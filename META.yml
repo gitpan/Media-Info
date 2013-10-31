@@ -3,14 +3,14 @@ abstract: 'Return information on media (music, video, etc) file/URL'
 author:
   - 'Steven Haryanto <stevenharyanto@gmail.com>'
 build_requires:
-  Capture::Tiny: 0
-  Test::More: 0.88
-  Test::Script: 1.05
-  blib: 0
+  File::Spec: 0
+  IO::Handle: 0
+  IPC::Open3: 0
+  Test::More: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.132140'
+generated_by: 'Dist::Zilla version 5.001, CPAN::Meta::Converter version 2.132140'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -19,8 +19,7 @@ name: Media-Info
 requires:
   Media::Info::Mplayer: 0
   Perinci::CmdLine: 0
+  Rinci: v1.1.40
   perl: 5.010001
-resources:
-  homepage: http://metacpan.org/release/Media-Info
-  repository: http://github.com/sharyanto/perl-Media-Info
-version: 0.02
+resources: {}
+version: 0.03

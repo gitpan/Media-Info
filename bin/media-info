@@ -6,7 +6,7 @@ use warnings;
 
 use Perinci::CmdLine;
 
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 Perinci::CmdLine->new(url=>'/Media/Info/get_media_info')->run;
 
@@ -26,7 +26,7 @@ media-file - Return information about a media file/URL
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -36,6 +36,23 @@ version 0.02
 
 This is a command-line interface for the C<get_media_info> function in
 L<Media::Info>.
+
+=head1 HOMEPAGE
+
+Please visit the project's homepage at L<https://metacpan.org/release/Media-Info>.
+
+=head1 SOURCE
+
+Source repository is at L<https://github.com/sharyanto/perl-Media-Info>.
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website
+http://rt.cpan.org/Public/Dist/Display.html?Name=Media-Info
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
 
 =head1 AUTHOR
 

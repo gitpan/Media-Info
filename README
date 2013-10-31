@@ -2,11 +2,29 @@ NAME
     Media::Info - Return information on media (music, video, etc) file/URL
 
 VERSION
-    version 0.02
+    version 0.03
 
 SYNOPSIS
      use Media::Info qw(get_media_info);
      my $res = get_media_info(media => '/path/to/celine.mp4');
+
+    Sample result:
+
+     [
+       200,
+       "OK",
+       {
+         audio_bitrate => 128000,
+         audio_format  => 85,
+         audio_rate    => 44100,
+         duration      => 2081.25,
+         num_channels  => 2,
+         num_chapters  => 0,
+       },
+       {
+         "func.raw_output" => "ID_AUDIO_ID=0\n...",
+       },
+     ]
 
 DESCRIPTION
     This module provides a common interface for Media::Info::* modules,
@@ -14,26 +32,10 @@ DESCRIPTION
     music, etc) using specific backends. Currently the only backend
     available is Media::Info::Mplayer, so this module uses that.
 
-SEE ALSO
-    Video::Info - This module is first written because I couldn't install
-    Video::Info. That module doesn't seem maintained (last release is in
-    2003 at the time of this writing), plus I want a per-backend namespace
-    organization instead of per-format one, and a simple functional
-    interface instead of OO interface.
-
-AUTHOR
-    Steven Haryanto <stevenharyanto@gmail.com>
-
-COPYRIGHT AND LICENSE
-    This software is copyright (c) 2013 by Steven Haryanto.
-
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
-
 FUNCTIONS
-    None are exported by default, but they are exportable.
-
   get_media_info(%args) -> [status, msg, result, meta]
+    Return information on media file/URL.
+
     Arguments ('*' denotes required arguments):
 
     *   media* => *str*
@@ -48,4 +50,34 @@ FUNCTIONS
     message, or 'OK' if status is 200. Third element (result) is optional,
     the actual result. Fourth element (meta) is called result metadata and
     is optional, a hash that contains extra information.
+
+SEE ALSO
+    Video::Info - This module is first written because I couldn't install
+    Video::Info. That module doesn't seem maintained (last release is in
+    2003 at the time of this writing), plus I want a per-backend namespace
+    organization instead of per-format one, and a simple functional
+    interface instead of OO interface.
+
+HOMEPAGE
+    Please visit the project's homepage at
+    <https://metacpan.org/release/Media-Info>.
+
+SOURCE
+    Source repository is at <https://github.com/sharyanto/perl-Media-Info>.
+
+BUGS
+    Please report any bugs or feature requests on the bugtracker website
+    http://rt.cpan.org/Public/Dist/Display.html?Name=Media-Info
+
+    When submitting a bug or request, please include a test-file or a patch
+    to an existing test-file that illustrates the bug or desired feature.
+
+AUTHOR
+    Steven Haryanto <stevenharyanto@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2013 by Steven Haryanto.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
 
