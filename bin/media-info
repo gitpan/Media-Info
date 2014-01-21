@@ -3,30 +3,68 @@
 use 5.010;
 use strict;
 use warnings;
+#use Log::Any '$log';
 
 use Perinci::CmdLine;
+use Media::Info qw(get_media_info);
 
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 
-Perinci::CmdLine->new(url=>'/Media/Info/get_media_info')->run;
+our %SPEC;
+
+$SPEC{media_info} = {
+    v => 1.1,
+    summary => 'Get information about media files/URLs',
+    args => {
+        media => {
+            summary => 'Media files/URLs',
+            schema => ['array*' => of => 'str*'],
+            req => 1,
+            pos => 0,
+            greedy => 1,
+        },
+    },
+};
+sub media_info {
+    my %args = @_;
+
+    my $media = $args{media};
+
+    if (@$media == 1) {
+        return get_media_info(media => $media->[0]);
+    } else {
+        my @res;
+        for (@$media) {
+            my $res = get_media_info(media => $_);
+            unless ($res->[0] == 200) {
+                warn "Can't get media info for '$_': $res->[1] ($res->[0])\n";
+                next;
+            }
+            push @res, { media => $_, %{$res->[2]} };
+        }
+        [200, "OK", \@res];
+    }
+}
+
+Perinci::CmdLine->new(url=>'/main/media_info')->run;
 
 1;
-# ABSTRACT: Return information about a media file/URL
+# ABSTRACT: Return information about media files/URLs
 # PODNAME: media-file
 
 __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
-media-file - Return information about a media file/URL
+media-file - Return information about media files/URLs
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -47,8 +85,7 @@ Source repository is at L<https://github.com/sharyanto/perl-Media-Info>.
 
 =head1 BUGS
 
-Please report any bugs or feature requests on the bugtracker website
-http://rt.cpan.org/Public/Dist/Display.html?Name=Media-Info
+Please report any bugs or feature requests on the bugtracker website L<https://rt.cpan.org/Public/Dist/Display.html?Name=Media-Info>
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
@@ -60,7 +97,7 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Steven Haryanto.
+This software is copyright (c) 2014 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

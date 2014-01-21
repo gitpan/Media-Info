@@ -10,7 +10,7 @@ our @EXPORT_OK = qw(
                        get_media_info
                );
 
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 
 our %SPEC;
 
@@ -39,7 +39,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -47,7 +47,7 @@ Media::Info - Return information on media (music, video, etc) file/URL
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -92,7 +92,7 @@ Arguments ('*' denotes required arguments):
 
 =item * B<media>* => I<str>
 
-Media file/URL.
+Return information on media file/URL.
 
 =back
 
@@ -117,8 +117,7 @@ Source repository is at L<https://github.com/sharyanto/perl-Media-Info>.
 
 =head1 BUGS
 
-Please report any bugs or feature requests on the bugtracker website
-http://rt.cpan.org/Public/Dist/Display.html?Name=Media-Info
+Please report any bugs or feature requests on the bugtracker website L<https://rt.cpan.org/Public/Dist/Display.html?Name=Media-Info>
 
 When submitting a bug or request, please include a test-file or a
 patch to an existing test-file that illustrates the bug or desired
@@ -130,7 +129,7 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Steven Haryanto.
+This software is copyright (c) 2014 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
