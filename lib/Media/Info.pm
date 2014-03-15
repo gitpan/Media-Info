@@ -10,7 +10,7 @@ our @EXPORT_OK = qw(
                        get_media_info
                );
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 our %SPEC;
 
@@ -47,7 +47,7 @@ Media::Info - Return information on media (music, video, etc) file/URL
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -92,7 +92,7 @@ Arguments ('*' denotes required arguments):
 
 =item * B<media>* => I<str>
 
-Return information on media file/URL.
+Media file/URL.
 
 =back
 
