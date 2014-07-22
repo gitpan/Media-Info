@@ -1,14 +1,14 @@
-#!/usr/bin/perl
+#!perl
 
 use 5.010;
 use strict;
 use warnings;
 #use Log::Any '$log';
 
-use Perinci::CmdLine;
+use Perinci::CmdLine::Any;
 use Media::Info qw(get_media_info);
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 our %SPEC;
 
@@ -46,11 +46,11 @@ sub media_info {
     }
 }
 
-Perinci::CmdLine->new(url=>'/main/media_info')->run;
+Perinci::CmdLine::Any->new(url=>'/main/media_info')->run;
 
 1;
 # ABSTRACT: Return information about media files/URLs
-# PODNAME: media-file
+# PODNAME: media-info
 
 __END__
 
@@ -60,15 +60,15 @@ __END__
 
 =head1 NAME
 
-media-file - Return information about media files/URLs
+media-info - Return information about media files/URLs
 
 =head1 VERSION
 
-version 0.05
+This document describes version 0.06 of media-info (from Perl distribution Media-Info), released on 2014-07-22.
 
 =head1 SYNOPSIS
 
- % media-file /home/steven/celine.mp4
+ % media-info /home/steven/celine.mp4
 
 =head1 DESCRIPTION
 

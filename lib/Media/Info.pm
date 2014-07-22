@@ -10,7 +10,7 @@ our @EXPORT_OK = qw(
                        get_media_info
                );
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 our %SPEC;
 
@@ -47,7 +47,7 @@ Media::Info - Return information on media (music, video, etc) file/URL
 
 =head1 VERSION
 
-version 0.05
+This document describes version 0.06 of Media::Info (from Perl distribution Media-Info), released on 2014-07-22.
 
 =head1 SYNOPSIS
 
@@ -98,7 +98,16 @@ Media file/URL.
 
 Return value:
 
-Returns an enveloped result (an array). First element (status) is an integer containing HTTP status code (200 means OK, 4xx caller error, 5xx function error). Second element (msg) is a string containing error message, or 'OK' if status is 200. Third element (result) is optional, the actual result. Fourth element (meta) is called result metadata and is optional, a hash that contains extra information.
+Returns an enveloped result (an array).
+
+First element (status) is an integer containing HTTP status code
+(200 means OK, 4xx caller error, 5xx function error). Second element
+(msg) is a string containing error message, or 'OK' if status is
+200. Third element (result) is optional, the actual result. Fourth
+element (meta) is called result metadata and is optional, a hash
+that contains extra information.
+
+ (any)
 
 =head1 SEE ALSO
 
