@@ -1,55 +1,22 @@
 #!perl
 
-use 5.010;
+# Note: This script is a CLI interface to Riap function /App/Media/Info/media_info
+# and generated automatically using Dist::Zilla::Plugin::Rinci::ScriptFromFunc version 0.03
+
+our $DATE = '2014-11-28'; # DATE
+our $VERSION = '0.07'; # VERSION
+
+use 5.010001;
 use strict;
 use warnings;
-#use Log::Any '$log';
 
-use Perinci::CmdLine::Any;
-use Media::Info qw(get_media_info);
+use Perinci::CmdLine::Any -prefer_lite=>1;
 
-our $VERSION = '0.06'; # VERSION
+Perinci::CmdLine::Any->new(
+    url => "/App/Media/Info/media_info",
+)->run;
 
-our %SPEC;
-
-$SPEC{media_info} = {
-    v => 1.1,
-    summary => 'Get information about media files/URLs',
-    args => {
-        media => {
-            summary => 'Media files/URLs',
-            schema => ['array*' => of => 'str*'],
-            req => 1,
-            pos => 0,
-            greedy => 1,
-        },
-    },
-};
-sub media_info {
-    my %args = @_;
-
-    my $media = $args{media};
-
-    if (@$media == 1) {
-        return get_media_info(media => $media->[0]);
-    } else {
-        my @res;
-        for (@$media) {
-            my $res = get_media_info(media => $_);
-            unless ($res->[0] == 200) {
-                warn "Can't get media info for '$_': $res->[1] ($res->[0])\n";
-                next;
-            }
-            push @res, { media => $_, %{$res->[2]} };
-        }
-        [200, "OK", \@res];
-    }
-}
-
-Perinci::CmdLine::Any->new(url=>'/main/media_info')->run;
-
-1;
-# ABSTRACT: Return information about media files/URLs
+# ABSTRACT: Get information about media files/URLs
 # PODNAME: media-info
 
 __END__
@@ -60,20 +27,107 @@ __END__
 
 =head1 NAME
 
-media-info - Return information about media files/URLs
+media-info - Get information about media files/URLs
 
 =head1 VERSION
 
-This document describes version 0.06 of media-info (from Perl distribution Media-Info), released on 2014-07-22.
+This document describes version 0.07 of media-info (from Perl distribution Media-Info), released on 2014-11-28.
 
 =head1 SYNOPSIS
 
- % media-info /home/steven/celine.mp4
+ % media-info [options] <media> ...
 
-=head1 DESCRIPTION
+=head1 OPTIONS
 
-This is a command-line interface for the C<get_media_info> function in
-L<Media::Info>.
+C<*> marks required options.
+
+=head2 Common options
+
+=over
+
+=item B<--config-path>=I<s>
+
+Set path to configuration file.
+
+=item B<--config-profile>=I<s>
+
+Set configuration profile to use.
+
+=item B<--format>=I<s>
+
+Set output format.
+
+=item B<--help>, B<-h>, B<-?>
+
+Show help message.
+
+=item B<--json>
+
+Set output format to json.
+
+=item B<--no-config>
+
+Do not use any configuration file.
+
+=item B<--version>, B<-v>
+
+Show program version.
+
+=back
+
+=head2 Options
+
+=over
+
+=item B<--media-json>=I<file_or_url>
+
+Media files/URLs (JSON-encoded).
+
+See C<--media>.
+
+=item B<--media>=I<file_or_url>*
+
+Media files/URLs.
+
+=back
+
+=head1 FILES
+
+B</etc/media-info.conf>
+
+B<~/media-info.conf>
+
+=head1 COMPLETION
+
+This script has shell tab completion capability with support for several shells.
+
+=head2 bash
+
+To activate bash completion for this script, put:
+
+ complete -C media-info media-info
+
+in your bash startup (e.g. C<~/.bashrc>). Your next shell session will then recognize tab completion for the command. Or, you can also directly execute the line above in your shell to activate immediately.
+
+You can also install L<App::BashCompletionProg> which makes it easy to add completion for Perinci::CmdLine-based scripts. After you install the module and put C<. ~/.bash-complete-prog> (or C<. /etc/bash-complete-prog>), you can just run C<bash-completion-prog> and the C<complete> command will be added to your C<~/.bash-completion-prog>. Your next shell session will then recognize tab completion for the command.
+
+=head2 tcsh
+
+To activate tcsh completion for this script, put:
+
+ complete media-info 'p/*/`media-info`/'
+
+in your tcsh startup (e.g. C<~/.tcshrc>). Your next shell session will then recognize tab completion for the command. Or, you can also directly execute the line above in your shell to activate immediately.
+
+=head2 zsh
+
+To activate zsh completion for this script, put:
+
+ _media_info() { read -l; local cl="$REPLY"; read -ln; local cp="$REPLY"; reply=(`COMP_LINE="$cl" COMP_POINT="$cp" media-info`) }
+
+ compctl -K _media_info media-info
+
+in your zsh startup (e.g. C<~/.zshrc>). Your next shell session will then recognize tab completion for the command. Or, you can also directly execute the line above in your shell to activate immediately.
 
 =head1 HOMEPAGE
 
@@ -93,11 +147,11 @@ feature.
 
 =head1 AUTHOR
 
-Steven Haryanto <stevenharyanto@gmail.com>
+perlancar <perlancar@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Steven Haryanto.
+This software is copyright (c) 2014 by perlancar@cpan.org.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
